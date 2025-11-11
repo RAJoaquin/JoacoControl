@@ -1,9 +1,11 @@
 Sistemas de control
+
 Titulo:* "Introducion a los sistemas de control"
 Creado:* 00/00/2025
 Versión:* 0.001
 Publicado:* no
 Autor: Gabriel A. Vasquez H.
+
 Introducción al Control y al Control Clásico
 1. ¿Qué es el control?
 Definición de control: El control es un proceso de modificación y ajuste de la entrada de un sistema
@@ -23,8 +25,11 @@ función de la temperatura medida.
 Elementos de un sistema de control
 Planta: Es el sistema que se va a controlar. Puede ser cualquier proceso físico, como un motor eléctrico,
 un sistema térmico o un sistema hidráulico.
+
 sistemas de control.md 2025-11-07
+
 2 / 10
+
 Sensor: Mide la variable controlada, como la temperatura, la posición o la velocidad. La medición debe
 ser precisa para que el controlador ajuste correctamente la señal de control.
 Controlador: Se encarga de calcular y enviar la señal de control adecuada al actuador, basándose en la
@@ -53,8 +58,7 @@ $L{f(t)}=F(s)=>\int_0^\infty f(t)^{-st}dt$
 Ejemplo: Para un sistema masa-resorte-amortiguador, se aplica la Segunda Ley de Newton para
 obtener una ED de segundo orden.
 Función de Transferencia $G(s)$ es la representación más usada en control clásico. Se obtiene aplicando
-la Transformada de Laplace a la ecuación diferencial lineal.$$G(s) = \frac{\text{Salida}(s)}{\text{Entrada}
-(s)}$$
+la Transformada de Laplace a la ecuación diferencial lineal $$G(s) = \frac{\text{Salida}(s)}{\text{Entrada}(s)}$$
 En el diagrama de bloques, esta función representa al Proceso/Planta.
 Con el modelo obtenido podemos estudiar las prespuesta temporal del sistema. La respuesta temporal de un
 sistema es el comportamiento de su salida (Variable a Controlada) a lo largo del tiempo, luego de que se le
@@ -62,8 +66,11 @@ aplica una señal de entrada específica. Es la forma en que el sistema reaccion
 se usan entradas de prueba estándar, siendo la más común la Entrada Escalón Unitario.
 A esta respuesta temporal la analizaremos en dos partes:
 1. Respuesta Transitoria
-2. sistemas de control.md 2025-11-07
+
+sistemas de control.md 2025-11-07
+
 3 / 10
+
 Es el comportamiento inicial y dinámico del sistema, que ocurre inmediatamente después de un
 cambio en la entrada.
 Características: Suele estar marcada por picos, oscilaciones y cambios rápidos. Esta parte
@@ -74,6 +81,7 @@ Tiempo de Levantamiento ($t_r$): Tiempo para ir del 10% al 90% del valor final.
 Sobrepaso Máximo ($M_p$): La máxima excursión por encima del valor final deseado.
 (Relacionado con la estabilidad del sistema).
 Tiempo Pico ($t_p$): Tiempo en el que se alcanza el primer sobrepaso.
+
 2. Respuesta en Estado Estable * Es el comportamiento del sistema después de que ha transcurrido un
 tiempo largo, cuando la respuesta transitoria ha desaparecido. * Característica: La salida se estabiliza
 cerca del valor deseado. * Parámetro importante:
@@ -81,6 +89,7 @@ Error en Estado Estacionario ($e_{ss}$): La diferencia final y permanente entre 
 y la salida. (El objetivo del término Integral del PID es eliminar este error).
 Tiempo de estabilizacion ($t_s$): El tiempo requerido para que la respuesta se mantenga dentro
 de un pequeño porcentaje (usualmente 2% o 5%) del valor final.
+
 Comprender el modelado (la $G(s)$) y la respuesta temporal es lo que permite entender cómo los términos P,
 I, y D del controlador afectan directamente la velocidad, la estabilidad y el error del sistema. para esto
 debemos enteder como es la respeusta temporal de un sistema.
@@ -99,12 +108,15 @@ $\frac{H(s)}{\alpha(s)}=\frac{ \frac{k_1}{k_2}}{ \frac{A}{k_2}s+1}e^(-\Theta s)$
 $\frac{H(s)}{\alpha(s)}=\frac{K}{\tau s+1}e^(-\Theta s)$
 Respuesta de un Sistema de Primer Orden
 si aplicamos la anti tranformada de laplace a la ecuacion transerencia:
+
 sistemas de control.md 2025-11-07
+
 4 / 10
 $\frac{H(s)}{\alpha(s)}=\frac{K}{\tau s+1}e^(-\Theta s)$
 Obtenemos
 $h(t)=AK(1-e^(-\frac{t}{\tau}))$
 Ahora podemos graficarla:
+
 La identificación de polos y ceros de primer orden es esencial para el diseño y análisis de sistemas de control.
 Los polos y ceros determinan las características de estabilidad y tiempo de establecimiento del sistema.
 Todo sistema de primer orden posee un polo el cual rige la dinámica del mismo. Si ese polo se encuentra
@@ -115,8 +127,11 @@ Al final, el polo deja de tener efecto, y la variable observada en la exponencia
 va a volver cero, lo que implica que el sistema habrá entrado en su regímen permanente.
 En la siguiente figura se puede evidenciar la respuesta transitoria y permanente de un sistema de primer
 orden.
+
 sistemas de control.md 2025-11-07
+
 5 / 10
+
 El estado estacionario del sistema es cuando la dinámica deja de variar y alcanza un equilibrio. Este valor de
 equilibrio puede ser encontrado a través del teorema del valor final.
 $h_e=\lim_{t\to\infty}AK(1-e^(-\frac{t}{\tau}))$
@@ -125,8 +140,11 @@ un sistema multiplicado por la magnitud de la entrada.
 τ = La constante de tiempo del sistema: Tiempo que le toma al sistema en llegar al 63.2% del estado estable.
 Tiempo de Establecimiento: Tiempo que le toma al sistema en llegar al estado estable y se calcula como:
 $t_s=4τ$
+
 sistemas de control.md 2025-11-07
+
 6 / 10
+
 La formula de tiempo de establecimiento es una herramienta valiosa para calcular el tiempo requerido para
 que un sistema alcance su estado estable.
 Sistema realimentrado
@@ -159,15 +177,19 @@ Para poder entender el concepto de este controlador, vamos a tomar como base el 
 tanque, que es un proceso simple, pero muy común en industrias, y lo importante es que gracias a ese
 proceso entenderemos el funcionamiento del control PID claro. A continuación se te muestra el diagrama de
 proceso del tanque:
+
 sistemas de control.md 2025-11-07
+
 7 / 10
+
 El tanque tendrá dos válvulas, la válvula de entrada sera nuestro elemento final de control, es decir el control
 actúa sobre esta válvula para aumentar o disminuir el nivel en el tanque, la válvula de salida, $a_s$, sera una
 perturbación, y vamos a considerarla como si ella se mantuviera en una abertura fija. Ahora partimos de las
 trasnferencia de la planta llamemoslo proceso(carga del tanqeu), nuestro control actuara sobre la senal de
 entrada(abrir la valvula de carga del tanque) de nuestro proceso y siempre tomaremos una realimentacion
-unitaria(gancia del lazo de realimentacion unitaria o igual a 1) 
- Podemos
+unitaria(gancia del lazo de realimentacion unitaria o igual a 1)
+
+Podemos
 ahora verdlo de la otra forma donde el control PID le da la orden de apertura y cierre de la valvula, u(t), y
 notemos que el sensor de nivel siempre le está mandando información al controlador de cual es el nivel que
 hay en el interior del tanque, y(t), el control PID hace una comparación entre la señal del sensor y el setpoint o
@@ -177,20 +199,27 @@ Control P, o Control Proporcional
 Comencemos entendiendo los beneficios que le aporta un bloque de proporcional al controlador, para eso
 vamos a suponer que en nuestro lazo de control unicamente contamos con un control Proporcional. Este
 controlador unicamente calcula un valor proporcional al error actual que existe en el proceso de lazo cerrado:
+
 sistemas de control.md 2025-11-07
+
 8 / 10
+
 Y con base a ese valor proporcional se lo aplica al sistema. En este caso a nuestra valvula de entrada del
 tanque: $a_e=K_pe_H$
 $a_e=K_p(H_r-H)$
 Concidere para nuestro caso a_e es la abertura de la válvula de entrada, H_r es la referencia, o sea cuanto nivel
 nosotros queremos en el tanque y H es el nivel actual dentro del tanque.
 Se puede notar que cuando el error es muy grande, la válvula abre mucho más y cuando el error disminuye la
-abertura de la válvula va cerrando. Observemos este comportamiento a través del siguiente gráfico: 
+abertura de la válvula va cerrando. Observemos este comportamiento a través del siguiente gráfico:
+
 La pendiente de la rampa viene dado por el valor de K_p, entre mas grande sea este valor, más inclinada será
 la rampa. Note que el grado de libertad del controlador puede ser observado en esa rampa y es conocido
 como la banda proporcional, entre más alto sea el valor de K_p menos banda proporcional tengo, y esto hace
+
 sistemas de control.md 2025-11-07
+
 9 / 10
+
 que la válvula se abre y se cierre instantaneamente, lo cual puede ser perjudicial para nuestro elemento final
 de control. La banda proporcional viene dado por: $BP= \frac{100}{K_p}%$
 Ahora, analizando el diagrama de lazo cerrado del sistema de control, sabemos que la ecuación del lazo
@@ -206,6 +235,7 @@ cerca de la referencia, sin embargo, como ya lo habíamos anticipado antes, eso 
 banda proporcional muy pequeña.
 Para entender esto, suponga que vamos a colocar una acción proporcional bastante grande, K_p=500, asi la
 banda proporcional viene dado por: $BP= \frac{100}{500}%=0.2%$
+
 Vemos que la banda proporcional es bastante reducida, lo que implica un comportamiento de abertura y
 cierre de la válvula muy rápidos, esto no es bueno para ningun sistema meqcanico perjudicial a nuestra
 valvula.
@@ -213,7 +243,10 @@ Error en estado estacionario
 Cuando solo usamos un control proporcional para eliminar el error en estado estacionario es muy común
 encontrar en los controladores PID industriales un BIAS, que permite adicionar al lazo de control un valor
 adicional para alcanzar la referencia.
+
 sistemas de control.md 2025-11-07
+
 10 / 10
+
 Con este Bias, la rampa del controlador proporcional es desplazada del origen, con esto la banda
 proporcional puede ser graficada como:
