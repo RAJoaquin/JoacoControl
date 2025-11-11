@@ -137,22 +137,18 @@ va a volver cero, lo que implica que el sistema habrá entrado en su regímen pe
 En la siguiente figura se puede evidenciar la respuesta transitoria y permanente de un sistema de primer
 orden.
 
-sistemas de control.md 2025-11-07
-
-5 / 10
-
 El estado estacionario del sistema es cuando la dinámica deja de variar y alcanza un equilibrio. Este valor de
 equilibrio puede ser encontrado a través del teorema del valor final.
+
 $h_e=\lim_{t\to\infty}AK(1-e^(-\frac{t}{\tau}))$
+
 ásicamente, el estacionário de los sistemas dinámicos de primer orden se encuentra en la ganancia estática de
 un sistema multiplicado por la magnitud de la entrada.
+
 τ = La constante de tiempo del sistema: Tiempo que le toma al sistema en llegar al 63.2% del estado estable.
 Tiempo de Establecimiento: Tiempo que le toma al sistema en llegar al estado estable y se calcula como:
+
 $t_s=4τ$
-
-sistemas de control.md 2025-11-07
-
-6 / 10
 
 La formula de tiempo de establecimiento es una herramienta valiosa para calcular el tiempo requerido para
 que un sistema alcance su estado estable.
@@ -160,36 +156,42 @@ Sistema realimentrado
 Para poder controlar la respeusta del sistema necesitamos saber como esta la salida para ello debemos
 muestrear la y de alguna manera modificar al entrada para lograr que la salida sea el valor deseado(seteado)
 esto da comienzo al concepto de lazo cerrado enel qeu encontramos los siguientes conceptos importantes:
-1. El Error ($e(t)$)Es el motor del control. Se calcula constantemente:$$e(t) = SP - PV(t)$$El objetivo del
-controlador es llevar y mantener este error a cero.
-2. Retroalimentación (Feedback), es el proceso de tomar la medición de la salida (PV) y enviarla de regreso
-al punto de comparación para generar el error. Es lo que hace que un sistema de lazo cerrado se
-autocorrija.
-3. Acción de Control, es la señal generada por el controlador (el PID) que se envía al actuador para
-corregir el error. El controlador PID logra esto a través de tres acciones (P, I, D), que es la base para las
-clases que planeas.
-Polos, ceros y estabilidad
-La estabilidad de un sistema depende de los polos de su función de transferencia (raíces del denominador).
-Si todos los polos tienen parte real negativa, el sistema es estable.
-Si algún polo tiene parte real positiva, el sistema es inestable.
-Si hay polos en el eje imaginario → el sistema oscila.
+*1. El Error ($e(t)$)*
+   Es el motor del control. Se calcula constantemente:
+   $$e(t) = SP - PV(t)$$
+   El objetivo del controlador es llevar y mantener este error a cero.
+   
+*2. Retroalimentación (Feedback)*
+   es el proceso de tomar la medición de la salida (PV) y enviarla de regreso
+   al punto de comparación para generar el error. Es lo que hace que un sistema de lazo cerrado se
+   autocorrija.
+
+*3. Acción de Control*
+   es la señal generada por el controlador (el PID) que se envía al actuador para
+   corregir el error. El controlador PID logra esto a través de tres acciones (P, I, D), que es la base para las
+   clases que planeas.
+
+*4. Polos, ceros y estabilidad*
+   La estabilidad de un sistema depende de los polos de su función de transferencia (raíces del denominador).
+   Si todos los polos tienen parte real negativa, el sistema es estable.
+   Si algún polo tiene parte real positiva, el sistema es inestable.
+   Si hay polos en el eje imaginario → el sistema oscila.
+   
 En la práctica, la estabilidad se observa en la respuesta temporal: si la salida se estabiliza, es estable; si oscila o
 diverge, no.
-Conclusiones prácticas
+
+*Conclusiones prácticas*
 La función de transferencia es la herramienta más poderosa del control clásico.
 Permite estudiar estabilidad, tiempo de respuesta y comportamiento sin experimentar físicamente.
 Casi todos los controladores industriales se diseñan con base en un modelo G(s) aproximado de la
 planta.
-Control PID
+
+*Control PID*
 Veamos como conptrolar una plata supongamos que se trata de un tanque de agua.
 Para poder entender el concepto de este controlador, vamos a tomar como base el control de Nivel de un
 tanque, que es un proceso simple, pero muy común en industrias, y lo importante es que gracias a ese
 proceso entenderemos el funcionamiento del control PID claro. A continuación se te muestra el diagrama de
 proceso del tanque:
-
-sistemas de control.md 2025-11-07
-
-7 / 10
 
 El tanque tendrá dos válvulas, la válvula de entrada sera nuestro elemento final de control, es decir el control
 actúa sobre esta válvula para aumentar o disminuir el nivel en el tanque, la válvula de salida, $a_s$, sera una
