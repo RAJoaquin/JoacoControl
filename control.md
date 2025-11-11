@@ -26,10 +26,6 @@ Elementos de un sistema de control
 Planta: Es el sistema que se va a controlar. Puede ser cualquier proceso físico, como un motor eléctrico,
 un sistema térmico o un sistema hidráulico.
 
-sistemas de control.md 2025-11-07
-
-2 / 10
-
 Sensor: Mide la variable controlada, como la temperatura, la posición o la velocidad. La medición debe
 ser precisa para que el controlador ajuste correctamente la señal de control.
 Controlador: Se encarga de calcular y enviar la señal de control adecuada al actuador, basándose en la
@@ -54,11 +50,16 @@ de Newton para sistemas mecánicos, Leyes de Kirchhoff para eléctricos, balance
 para químicos).La transformada de Laplace nos permite convertir esas ecuaciones integro-diferenciales
 en expresiones algebraicas, más fáciles de manipular y entender.
 Transformada de Laplace:
+
 $L{f(t)}=F(s)=>\int_0^\infty f(t)^{-st}dt$
+
 Ejemplo: Para un sistema masa-resorte-amortiguador, se aplica la Segunda Ley de Newton para
 obtener una ED de segundo orden.
 Función de Transferencia $G(s)$ es la representación más usada en control clásico. Se obtiene aplicando
-la Transformada de Laplace a la ecuación diferencial lineal $$G(s) = \frac{\text{Salida}(s)}{\text{Entrada}(s)}$$
+la Transformada de Laplace a la ecuación diferencial lineal
+
+$$G(s) = \frac{\text{Salida}(s)}{\text{Entrada}(s)}$$
+
 En el diagrama de bloques, esta función representa al Proceso/Planta.
 Con el modelo obtenido podemos estudiar las prespuesta temporal del sistema. La respuesta temporal de un
 sistema es el comportamiento de su salida (Variable a Controlada) a lo largo del tiempo, luego de que se le
@@ -67,19 +68,18 @@ se usan entradas de prueba estándar, siendo la más común la Entrada Escalón 
 A esta respuesta temporal la analizaremos en dos partes:
 1. Respuesta Transitoria
 
-sistemas de control.md 2025-11-07
-
-3 / 10
-
 Es el comportamiento inicial y dinámico del sistema, que ocurre inmediatamente después de un
 cambio en la entrada.
 Características: Suele estar marcada por picos, oscilaciones y cambios rápidos. Esta parte
 eventualmente desaparece.
 Parámetros importantes (para sintonizar el PID):
+
 Tiempo de Levantamiento ($t_r$): Tiempo para ir del 10% al 90% del valor final.
 (Relacionado con la velocidad de la respuesta).
+
 Sobrepaso Máximo ($M_p$): La máxima excursión por encima del valor final deseado.
 (Relacionado con la estabilidad del sistema).
+
 Tiempo Pico ($t_p$): Tiempo en el que se alcanza el primer sobrepaso.
 
 2. Respuesta en Estado Estable * Es el comportamiento del sistema después de que ha transcurrido un
@@ -98,23 +98,32 @@ Los sistemas de primer orden por definición son aquellos que tienen un solo pol
 ecuaciones diferenciales ordinarias de primer orden, Quiere decir que el máximo orden de la derivada es
 orden 1. Considerando el caso de las ecuaciones diferenciales lineales de primer orden, con coeficientes
 constantes y condición inicial cero, tenemos:
+
 $a_1\frac{dy(t)}{dt}+ a_0y(t)= b_0 u(t)$ con: $y(0)=0$
+
 sea nuestra eqcuacion diferencial:
+
 $a \frac{dh(t)}{dt}=k_1H(t-0)\alpha(t-0)-k_2h(t)$
-Aplicando la transformada de Laplas:
+
+Aplicando la transformada de Laplace:
+
 $AsH(s) = k_1e^(-\Theta s)\alpha(s) - k_2H(s)$
+
 $\frac{H(s)}{\alpha(s)}=\frac{k_1}{As+k_2}e^(-\Theta s)$
+
 $\frac{H(s)}{\alpha(s)}=\frac{ \frac{k_1}{k_2}}{ \frac{A}{k_2}s+1}e^(-\Theta s)$
+
 $\frac{H(s)}{\alpha(s)}=\frac{K}{\tau s+1}e^(-\Theta s)$
+
 Respuesta de un Sistema de Primer Orden
 si aplicamos la anti tranformada de laplace a la ecuacion transerencia:
 
-sistemas de control.md 2025-11-07
-
-4 / 10
 $\frac{H(s)}{\alpha(s)}=\frac{K}{\tau s+1}e^(-\Theta s)$
+
 Obtenemos
+
 $h(t)=AK(1-e^(-\frac{t}{\tau}))$
+
 Ahora podemos graficarla:
 
 La identificación de polos y ceros de primer orden es esencial para el diseño y análisis de sistemas de control.
