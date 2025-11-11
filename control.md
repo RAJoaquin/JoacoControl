@@ -156,6 +156,7 @@ Sistema realimentrado
 Para poder controlar la respeusta del sistema necesitamos saber como esta la salida para ello debemos
 muestrear la y de alguna manera modificar al entrada para lograr que la salida sea el valor deseado(seteado)
 esto da comienzo al concepto de lazo cerrado enel qeu encontramos los siguientes conceptos importantes:
+
 *1. El Error ($e(t)$)*
    Es el motor del control. Se calcula constantemente:
    $$e(t) = SP - PV(t)$$
@@ -194,7 +195,7 @@ proceso entenderemos el funcionamiento del control PID claro. A continuación se
 proceso del tanque:
 
 El tanque tendrá dos válvulas, la válvula de entrada sera nuestro elemento final de control, es decir el control
-actúa sobre esta válvula para aumentar o disminuir el nivel en el tanque, la válvula de salida, $a_s$, sera una
+actúa sobre esta válvula para aumentar o disminuir el nivel en el tanque, la válvula de salida, $a_s$ , sera una
 perturbación, y vamos a considerarla como si ella se mantuviera en una abertura fija. Ahora partimos de las
 trasnferencia de la planta llamemoslo proceso(carga del tanqeu), nuestro control actuara sobre la senal de
 entrada(abrir la valvula de carga del tanque) de nuestro proceso y siempre tomaremos una realimentacion
@@ -211,13 +212,12 @@ Comencemos entendiendo los beneficios que le aporta un bloque de proporcional al
 vamos a suponer que en nuestro lazo de control unicamente contamos con un control Proporcional. Este
 controlador unicamente calcula un valor proporcional al error actual que existe en el proceso de lazo cerrado:
 
-sistemas de control.md 2025-11-07
-
-8 / 10
-
 Y con base a ese valor proporcional se lo aplica al sistema. En este caso a nuestra valvula de entrada del
-tanque: $a_e=K_pe_H$
+tanque: 
+$a_e=K_pe_H$
+
 $a_e=K_p(H_r-H)$
+
 Concidere para nuestro caso a_e es la abertura de la válvula de entrada, H_r es la referencia, o sea cuanto nivel
 nosotros queremos en el tanque y H es el nivel actual dentro del tanque.
 Se puede notar que cuando el error es muy grande, la válvula abre mucho más y cuando el error disminuye la
@@ -227,37 +227,43 @@ La pendiente de la rampa viene dado por el valor de K_p, entre mas grande sea es
 la rampa. Note que el grado de libertad del controlador puede ser observado en esa rampa y es conocido
 como la banda proporcional, entre más alto sea el valor de K_p menos banda proporcional tengo, y esto hace
 
-sistemas de control.md 2025-11-07
-
-9 / 10
 
 que la válvula se abre y se cierre instantaneamente, lo cual puede ser perjudicial para nuestro elemento final
-de control. La banda proporcional viene dado por: $BP= \frac{100}{K_p}%$
+de control. La banda proporcional viene dado por: 
+$BP= \frac{100}{K_p}%$
+
 Ahora, analizando el diagrama de lazo cerrado del sistema de control, sabemos que la ecuación del lazo
 cerrado viene dado por:
+
 $T=\frac{CP}{(1+CP)}$
+
 Donde el modelo del tanque puede ser representado por un sistema de primer orden:
-$P=\frac{K}{\tau s+1}$ ue solo tendrá el comportamiento de su ganancia estática, quiere decir que el lazo
-cerrado en estado estacionario viene dado por: $T_s=\frac{K_pK}{1+K_pK}$
+
+$P=\frac{K}{\tau s+1}$ 
+
+que solo tendrá el comportamiento de su ganancia estática, quiere decir que el lazo
+cerrado en estado estacionario viene dado por:
+
+$T_s=\frac{K_pK}{1+K_pK}$
+
 A partir de esa ecuación es fácil ver que un control proporcional por si solo no elimina el error, es decir no
 llega hasta la referencia, por causa que en el denominador le estamos sumando un uno. Notemos que si
 aumentamos mucho la Ganancia proporcional K_p el lazo cerrado va a tender a 1, es decir va a estar muy
 cerca de la referencia, sin embargo, como ya lo habíamos anticipado antes, eso va a dejar el sistema con una
 banda proporcional muy pequeña.
 Para entender esto, suponga que vamos a colocar una acción proporcional bastante grande, K_p=500, asi la
-banda proporcional viene dado por: $BP= \frac{100}{500}%=0.2%$
+banda proporcional viene dado por: 
+
+$BP= \frac{100}{500}%=0.2%$
 
 Vemos que la banda proporcional es bastante reducida, lo que implica un comportamiento de abertura y
 cierre de la válvula muy rápidos, esto no es bueno para ningun sistema meqcanico perjudicial a nuestra
 valvula.
-Error en estado estacionario
+
+*Error en estado estacionario*
 Cuando solo usamos un control proporcional para eliminar el error en estado estacionario es muy común
 encontrar en los controladores PID industriales un BIAS, que permite adicionar al lazo de control un valor
 adicional para alcanzar la referencia.
-
-sistemas de control.md 2025-11-07
-
-10 / 10
 
 Con este Bias, la rampa del controlador proporcional es desplazada del origen, con esto la banda
 proporcional puede ser graficada como:
