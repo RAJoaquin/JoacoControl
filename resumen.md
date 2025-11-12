@@ -1,15 +1,8 @@
-# JoacoControl
-
-![ECEA Logo](ecea-logo.png)
-<!-- Si tenés el logo, ponelo en la misma carpeta y se verá -->
 
 # Sistemas de Control
 
 *Título:* "Introducción a los sistemas de control"  
 *Creado:* 07/11/2025  
-*Versión:* 0.001  
-*Publicado:* no  
-*Autor:* Gabriel A. Vásquez H.
 
 ## 1. ¿Qué es el control?
 
@@ -80,7 +73,7 @@ Respuesta al escalón $AK$:
 
 $$ h(t) = AK \left(1 - e^{-t/\tau}\right) \quad (t \geq \Theta) $$
 
-![Respuesta primer orden](primer_orden.png)
+<img width="632" height="466" alt="image" src="https://github.com/user-attachments/assets/08cbf732-fab9-4701-8074-5df85e7a6d30" />
 
 - $\tau$: constante de tiempo → 63.2 % del valor final
 - Tiempo de asentamiento: $t_s \approx 4\tau$ (2 %) o $5\tau$ (1 %)
@@ -106,13 +99,13 @@ $$ h_{ss} = \lim_{t \to \infty} h(t) = AK $$
 
 ## Control PID – Ejemplo: Tanque de nivel
 
-![Diagrama tanque](tanque.png)
+<img width="606" height="408" alt="image" src="https://github.com/user-attachments/assets/2b3c2438-ac8e-4c3c-98ba-3a5d3c4e00f7" />
 
 - $a_e$: apertura válvula entrada (manipulada)
 - $a_s$: apertura válvula salida (perturbación fija)
 - Realimentación unitaria
 
-![Lazo cerrado PID](pid_tanque.png)
+<img width="738" height="241" alt="image" src="https://github.com/user-attachments/assets/e798de10-95c7-4829-b103-c131e4350235" />
 
 ### Control Proporcional (P)
 
@@ -130,6 +123,6 @@ $$ T(s) = \frac{K_p P(s)}{1 + K_p P(s)} \quad \Rightarrow \quad T_{ss} = \frac{K
 
 *Solución industrial:* *BIAS* (término constante)
 
-![Control P con Bias](p_bias.png)
+<img width="657" height="218" alt="image" src="https://github.com/user-attachments/assets/0cb8a86f-ac4c-49ba-b3e0-13e4ef9a73b1" />
 
 ---
