@@ -45,6 +45,9 @@ $$ \mathcal{L}\{f(t)\} = F(s) = \int_0^\infty f(t)e^{-st}dt $$
 
 $$ G(s) = \frac{Y(s)}{U(s)} $$
 
+$Y(s)$ Salida
+$U(s)$ Entrada
+
 ### Respuesta temporal (entrada escalón unitario)
 1. *Respuesta transitoria*
    - Tiempo de subida $t_r$: 10 % → 90 %
